@@ -2,6 +2,8 @@
 
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+
 
 function NavHeader() {
   const [position, setPosition] = useState({
@@ -15,11 +17,11 @@ function NavHeader() {
       className="relative mx-auto flex w-fit m-2 border-2 border-black p-1"
       onMouseLeave={() => setPosition((pv) => ({ ...pv, opacity: 0 }))}
     >
-      <Tab setPosition={setPosition}>Home</Tab>
-      <Tab setPosition={setPosition}>Pricing</Tab>
-      <Tab setPosition={setPosition}>About</Tab>
-      <Tab setPosition={setPosition}>Services</Tab>
-      <Tab setPosition={setPosition}>Contact</Tab>
+      <Tab href="" setPosition={setPosition}>Home</Tab>
+      <Tab setPosition={setPosition} href="/news">News</Tab>
+      <Tab setPosition={setPosition} href="/articles">Articles</Tab>
+      <Tab href="/about" setPosition={setPosition}>About</Tab>
+      <Tab href="/contact" setPosition={setPosition}>Contact</Tab>
 
       <Cursor position={position} />
     </ul>
@@ -29,17 +31,19 @@ function NavHeader() {
 const Tab = ({
   children,
   setPosition,
+  href, // ✅ Add href as a prop
 }: {
   children: React.ReactNode;
   setPosition: any;
+  href: string; // ✅ Explicitly define href
 }) => {
   const ref = useRef<HTMLLIElement>(null);
+
   return (
     <li
       ref={ref}
       onMouseEnter={() => {
         if (!ref.current) return;
-
         const { width } = ref.current.getBoundingClientRect();
         setPosition({
           width,
@@ -49,10 +53,12 @@ const Tab = ({
       }}
       className="relative z-10 block cursor-pointer px-3 py-1.5 text-3xl uppercase text-white mix-blend-difference md:px-5 md:py-3 md:text-base"
     >
-      {children}
+      {/* ✅ Wrap children inside Link */}
+      <Link href={href}>{children}</Link>
     </li>
   );
 };
+
 
 const Cursor = ({ position }: { position: any }) => {
   return (

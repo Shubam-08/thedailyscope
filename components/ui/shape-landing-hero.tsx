@@ -74,9 +74,9 @@ function ElegantShape({
 }
 
 function HeroGeometric({
-    badge = "Design Collective",
-    title1 = "Elevate Your Digital Vision",
-    title2 = "Crafting Exceptional Websites",
+    badge = "thedailyscope",
+    title1 = "Stay Informed, Stay Ahead",
+    title2 = "with The Daily Scope!",
 }: {
     badge?: string;
     title1?: string;
@@ -101,7 +101,7 @@ function HeroGeometric({
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.05] via-transparent to-rose-500/[0.05] blur-3xl" />
 
             <div className="absolute inset-0 overflow-hidden">
-                <NavHeader />
+                {/* <NavHeader /> */}
                 <ElegantShape
                     delay={0.3}
                     width={600}
@@ -192,8 +192,7 @@ function HeroGeometric({
                         animate="visible"
                     >
                         <p className="text-base sm:text-lg md:text-xl text-white/40 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4">
-                            Crafting exceptional digital experiences through
-                            innovative design and cutting-edge technology.
+                        "From Headlines to Insights – Your News, Your Way!"
                         </p>
                     </motion.div>
                 </div>
